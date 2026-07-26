@@ -1,45 +1,66 @@
-Bu proje hem mobil arayüzü hem de arkada çalışan sunucuyu içeren bir alışveriş listesi uygulamasıdır. İhtiyacın olan şeyleri listeye ekleyip adetlerini takip edebiliyorsun.
+# Listora
 
-Proje Nasıl Çalışıyor?
-Uygulama iki ana kısımdan oluşuyor:
+> A mobile shopping-list app backed by a lightweight Express API and PostgreSQL.
 
-Mobil (Frontend): React Native ve Expo ile hazırladım. Şık bir arayüzü var, giriş yapıp listeni görebiliyorsun.
+![React Native](https://img.shields.io/badge/React_Native-20232A?style=flat-square&logo=react&logoColor=61DAFB)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=flat-square&logo=express&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
 
-Sunucu (Backend): Node.js ve Express kullanarak yazdım. PostgreSQL veritabanına bağlanıp verileri kaydediyor.
+## Overview
 
-Veritabanı Yapısı
-PostgreSQL tarafında iki tane basit tablom var:
+Listora is a full-stack learning project for keeping a user-specific shopping list. I focused on a clean mobile flow while practicing API communication, account-based data filtering, parameterized SQL queries, and relational persistence.
 
-kullanicilar: İnsanların kayıt olup giriş yapmasını sağlıyor (id, kullanici_adi, sifre).
+## Features
 
-alisverilistesi: Eklenen ürünleri tutuyor (id, kullanici_id, alinacak_ismi, alinacak_miktar).
+- Register and sign in
+- Restore the active user from local storage
+- Add products with a name and quantity
+- Fetch list entries for the signed-in user
+- Show live item counts in the mobile interface
+- Keep user data separated through database relationships
 
-Kurulum ve Çalıştırma
-Sunucu tarafı için:
+## Stack
 
-Bilgisayarında PostgreSQL kurulu olmalı.
+| Layer | Technology |
+| --- | --- |
+| Mobile frontend | React Native, Expo, Expo Router |
+| Language | TypeScript, JavaScript |
+| API | Node.js, Express, CORS |
+| Database | PostgreSQL, node-postgres |
+| Local session | AsyncStorage |
 
-alısverisyonetimidb adında bir database oluşturman lazım.
+## API surface
 
-Sunucu klasöründe npm install komutuyla paketleri yükle.
+```text
+POST /giris
+POST /kayit
+GET  /liste/:id
+POST /liste-ekle
+```
 
-node index.js komutuyla 3000 portunda sunucuyu ayağa kaldır.
+## Run locally
 
-Mobil tarafı için:
+```bash
+git clone https://github.com/mustafasenyusz/Listora.git
+cd Listora
+npm install
+node database.js
+npx expo start
+```
 
-Expo yüklü olmalı.
+Create the PostgreSQL database and tables, then update the local database connection and client API base URL.
 
-npm install ile bağımlılıkları indir.
+## Engineering roadmap
 
-Kodun içindeki IP adreslerini kendi bilgisayarının IP'siyle değiştir.
+- Add edit, complete, and delete operations
+- Move secrets and URLs into environment configuration
+- Add password hashing and API authentication
+- Improve loading, offline, and error states
+- Add database migrations and automated tests
 
-npx expo start yazıp uygulamayı telefonundan veya simülatörden aç.
+This project reflects my direction clearly: frontend is my main strength, while Node.js, Express, and PostgreSQL are the areas I am actively developing.
 
-Yapılabilen İşler
-Kullanıcı hesabı oluşturma ve giriş yapma.
+## Developer
 
-Kişiye özel alışveriş listesi görüntüleme.
-
-Listeye ürün ismi ve miktarı (adet/br) ekleme.
-
-Çıkış yapıp hesaptan ayrılma.
+Built by [Mustafa Şenyüz](https://github.com/mustafasenyusz).
